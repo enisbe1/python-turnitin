@@ -13,3 +13,7 @@ class IdealData(Connection):
         df = pd.read_csv('dataset/ideal.csv')
         self.createTable()
         df.to_sql('ideal_data', self.engine, if_exists='replace', index=False)
+
+    def loadDatas(self):
+        return pd.read_sql_table(
+            'ideal_data', self.engine.connect())

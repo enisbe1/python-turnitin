@@ -14,3 +14,7 @@ class TrainData(Connection):
         super().dropTable()
         self.createTable()
         df.to_sql('train_data', self.engine, if_exists='replace', index=False)
+
+    def loadDatas(self):
+        return pd.read_sql_table(
+            'train_data', self.engine.connect())
