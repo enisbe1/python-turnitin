@@ -25,5 +25,5 @@ class Connection:
         print('create table')
 
     # model methode for overriding
-    def initializeData():
+    def initializeDatas():
         print('initialize data')
