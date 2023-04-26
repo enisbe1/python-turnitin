@@ -1,9 +1,11 @@
 from idealFunctions import IdealFunctions
+from testData import TestData
 
 
 def main():
     idealFunctions = IdealFunctions()
-    idealFunctions.insertDatas()
+    testData = TestData(idealFunctions.findFunctions())
+    testData.compare()
 
 
 if __name__ == '__main__':

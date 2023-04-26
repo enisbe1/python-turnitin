@@ -3,8 +3,6 @@ import pandas as pd
 
 
 class IdealData(Connection):
-    def __init__(self):
-        super().__init__()
 
     def createTable(self):
         self.base.metadata.create_all(self.engine)
