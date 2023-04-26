@@ -10,9 +10,18 @@ def print_factors(x):
             print(i)
 
 
-class TestData:
+class TestData(Connection):
     def __init__(self, idealFunctions):
         self.idealFunctions = idealFunctions
+        super().__init__()
+
+    def createTable(self):
+        self.base.metadata.create_all(self.engine)
+
+    def initializeDatas(self, data):
+        print('testttt', data)
+        data.to_sql('test_data_deviation', self.engine,
+                    if_exists='replace', index=False)
 
     def compare(self):
         testData = pd.read_csv('dataset/test.csv')
@@ -21,9 +30,9 @@ class TestData:
             found = self.idealFunctions[self.idealFunctions['x'] == row['x']]
             maxValue = found.filter(like='y').iloc[0].max()
             if row['y'] / maxValue <= math.sqrt(2):
-                rowAppended = {'x': row['x'], 'y': row['y'], 'y_value': maxValue,
+                rowAppended = {'x': row['x'], 'y': row['y'], 'delta_y': maxValue,
                                'number_of_function': found.index[0]}
                 datasPassed.append(rowAppended)
 
         df = pd.DataFrame(datasPassed)
-        print(df)
+        return df
