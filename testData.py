@@ -3,13 +3,6 @@ import math
 from connection import Connection
 
 
-def print_factors(x):
-    print("The factors of", x, "are:")
-    for i in range(1, x + 1):
-        if x % i == 0:
-            print(i)
-
-
 class TestData(Connection):
     def __init__(self, idealFunctions):
         self.idealFunctions = idealFunctions

@@ -22,14 +22,13 @@ class IdealFunctions:
     def findFunctions(self):
         result = self.initializeDatas()
         trainDf, idealDf = result
-
-        ideal_x = idealDf['x'].values
-
         # Extract y values from training dataset
         train_y1 = trainDf['y1'].values
         train_y2 = trainDf['y2'].values
         train_y3 = trainDf['y3'].values
         train_y4 = trainDf['y4'].values
+
+        ideal_x = idealDf['x'].values
 
         # Extract y values from ideal functions dataset
         ideal_y = idealDf.iloc[:, 1:].values
@@ -50,4 +49,4 @@ class IdealFunctions:
         frame = pd.DataFrame(ideal_chosen, columns=['y1', 'y2', 'y3', 'y4'])
         frame['x'] = ideal_x
 
-        return frame
+        return frame, idealDf, trainDf
