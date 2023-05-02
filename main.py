@@ -8,6 +8,12 @@ output_file("layout.html")
 
 
 def main():
+    '''
+    Main method to start the application
+    Calls classes with logical order to execute each one of them
+    On program execution this method is called
+    No return on this method
+    '''
     idealFunctions = IdealFunctions()
     frame, idealDf, trainDf = idealFunctions.findFunctions()
     testData = TestData(frame)
