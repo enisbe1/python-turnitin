@@ -57,6 +57,7 @@ class UnitTestTrainData(unittest.TestCase):
         trainData = TrainData()
         trainData.initializeDatas()
         result = trainData.loadDatas()
+
         self.assertEqual(result.iloc[0]['x'], -20)
 
 

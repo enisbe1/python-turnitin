@@ -63,4 +63,5 @@ class UnitTestTestData(unittest.TestCase):
         frame, idealDf, trainDf = idealFunctions.findFunctions()
         testData = TestData(frame)
         result = testData.compare()
+
         self.assertEqual(result.iloc[0]['x'], -5)

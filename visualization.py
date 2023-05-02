@@ -73,4 +73,5 @@ class UnitTestVizualize(unittest.TestCase):
         datasToSave = testData.compare()
         vizualization = Vizualization(trainDf, idealDf, frame, datasToSave)
         result = vizualization.visualizeFrame(trainDf, 'trainData')
+
         self.assertIsNotNone(result)

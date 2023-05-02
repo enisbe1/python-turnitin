@@ -53,4 +53,5 @@ class UnitTestIdealData(unittest.TestCase):
     def test_loadDatas(self):
         idealData = IdealData()
         result = idealData.loadDatas()
+
         self.assertEqual(result.iloc[0]['y1'], -0.9129453)
