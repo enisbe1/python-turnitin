@@ -1,10 +1,6 @@
 from idealFunctions import IdealFunctions
 from testData import TestData
 from visualization import Vizualization
-from bokeh.plotting import figure, output_file, show
-from bokeh.layouts import column
-from bokeh.models import ColumnDataSource
-output_file("layout.html")
 
 
 def main():

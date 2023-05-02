@@ -3,6 +3,7 @@ import pandas as pd
 from trainData import TrainData
 from idealData import IdealData
 import numpy as np
+import unittest
 
 
 class IdealFunctions:
@@ -75,3 +76,20 @@ class IdealFunctions:
             exception_type, exception_value, exception_traceback = sys.exc_info()
             print("Exception Type: {}\nException Value: {}".format(exception_type,
                                                                    exception_value))
+
+
+class UnitTestIdealFunctions(unittest.TestCase):
+    def test_initializeDatas(self):
+        idealFunctions = IdealFunctions()
+        trainDf, idealDf = idealFunctions.initializeDatas()
+
+        self.assertEqual(trainDf.iloc[0]['x'], -20)
+        self.assertEqual(idealDf.iloc[0]['y1'], -0.9129453)
+
+    def test_findFunctions(self):
+        idealFunctions = IdealFunctions()
+        frame, trainDf, idealDf = idealFunctions.findFunctions()
+
+        self.assertEqual(trainDf.iloc[0]['x'], -20)
+        self.assertEqual(idealDf.iloc[0]['y1'], 0.052657526)
+        self.assertEqual(frame.iloc[0]['y1'], -0.008333334)

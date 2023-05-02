@@ -1,6 +1,7 @@
 import sys
 from connection import Connection
 import pandas as pd
+import unittest
 
 
 class IdealData(Connection):
@@ -46,3 +47,10 @@ class IdealData(Connection):
             exception_type, exception_value, exception_traceback = sys.exc_info()
             print("Exception Type: {}\nException Value: {}".format(exception_type,
                                                                    exception_value))
+
+
+class UnitTestIdealData(unittest.TestCase):
+    def test_loadDatas(self):
+        idealData = IdealData()
+        result = idealData.loadDatas()
+        self.assertEqual(result.iloc[0]['y1'], -0.9129453)

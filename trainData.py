@@ -1,6 +1,7 @@
 import sys
 from connection import Connection
 import pandas as pd
+import unittest
 
 
 class TrainData(Connection):
@@ -49,3 +50,15 @@ class TrainData(Connection):
             exception_type, exception_value, exception_traceback = sys.exc_info()
             print("Exception Type: {}\nException Value: {}".format(exception_type,
                                                                    exception_value))
+
+
+class UnitTestTrainData(unittest.TestCase):
+    def test_loadDatas(self):
+        trainData = TrainData()
+        trainData.initializeDatas()
+        result = trainData.loadDatas()
+        self.assertEqual(result.iloc[0]['x'], -20)
+
+
+if __name__ == '__main__':
+    unittest.main()

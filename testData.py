@@ -2,6 +2,8 @@ import sys
 import pandas as pd
 import math
 from connection import Connection
+import unittest
+from idealFunctions import IdealFunctions
 
 
 class TestData(Connection):
@@ -53,3 +55,12 @@ class TestData(Connection):
             exception_type, exception_value, exception_traceback = sys.exc_info()
             print("Exception Type: {}\nException Value: {}".format(exception_type,
                                                                    exception_value))
+
+
+class UnitTestTestData(unittest.TestCase):
+    def test_compare(self):
+        idealFunctions = IdealFunctions()
+        frame, idealDf, trainDf = idealFunctions.findFunctions()
+        testData = TestData(frame)
+        result = testData.compare()
+        self.assertEqual(result.iloc[0]['x'], -5)

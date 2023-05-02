@@ -2,6 +2,10 @@ import sys
 from bokeh.plotting import figure, output_file, show
 from bokeh.layouts import column
 from bokeh.models import ColumnDataSource
+import unittest
+from idealFunctions import IdealFunctions
+from testData import TestData
+
 output_file("layout.html")
 colors = ['red', 'green', 'blue', 'yellow', 'purple']
 
@@ -59,3 +63,14 @@ class Vizualization:
             exception_type, exception_value, exception_traceback = sys.exc_info()
             print("Exception Type: {}\nException Value: {}".format(exception_type,
                                                                    exception_value))
+
+
+class UnitTestVizualize(unittest.TestCase):
+    def test_visualizeFrame(self):
+        idealFunctions = IdealFunctions()
+        frame, idealDf, trainDf = idealFunctions.findFunctions()
+        testData = TestData(frame)
+        datasToSave = testData.compare()
+        vizualization = Vizualization(trainDf, idealDf, frame, datasToSave)
+        result = vizualization.visualizeFrame(trainDf, 'trainData')
+        self.assertIsNotNone(result)
